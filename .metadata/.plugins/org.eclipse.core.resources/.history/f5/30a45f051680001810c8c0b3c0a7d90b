@@ -1,0 +1,55 @@
+package com.skilldistillery.spotify.data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.skilldistillery.spotify.entitities.Membership;
+
+@Transactional
+@Service
+public class MembershipDAOImpl implements MembershipDAO {
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public List<Membership> index() {
+		String query = "SELECT m from Membership m";
+		return em.createQuery(query, Membership.class).getResultList();
+	}
+
+	@Override
+	public Membership show(int id) {
+		return em.find(Membership.Class, id);
+	}
+
+	@Override
+	public boolean delete(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Membership update(Membership newMembership, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Membership replace(Membership newMembership, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Membership createTracker(Membership membership) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

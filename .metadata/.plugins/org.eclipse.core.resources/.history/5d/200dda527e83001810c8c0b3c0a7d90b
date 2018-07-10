@@ -1,0 +1,69 @@
+package com.skilldistillery.spotify.data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.skilldistillery.spotify.entitities.Membership;
+
+@Transactional
+@Service
+public class MembershipDAOImpl implements MembershipDAO {
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public List<Membership> index() {
+		String query = "SELECT m from Membership m";
+		return em.createQuery(query, Membership.class).getResultList();
+	}
+
+	@Override
+	public Membership show(int id) {
+		return em.find(Membership.class, id);
+	}
+
+	@Override
+	public Membership create(Membership membership) {
+		em.persist(membership);
+		em.flush();
+		return membership;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		Boolean removed = false;
+		Membership m = em.find(Membership.class, id);
+		em.remove(m);
+		if (em.find(Membership.class, id) == null) {
+			removed = true;
+		}
+		return removed;
+	}
+
+	@Override
+	public Membership update(Membership newMembership, int id) {
+		Membership m = em.find(Membership.class, id);
+		if (newMembership.getName() != null) {
+			m.setName(newMembership.getName());
+		}
+		if (newMembership.getCost() != 0.0) {
+			m.setCost(newMembership.getCost());
+		}
+		return m;
+	}
+
+	@Override
+	public Membership replace(Membership newMembership, int id) {
+		Membership m = em.find(Membership.class, id);
+		m.setName(newMembership.getName());
+		m.setCost(newMembership.getCost());
+		return m;
+	}
+
+}

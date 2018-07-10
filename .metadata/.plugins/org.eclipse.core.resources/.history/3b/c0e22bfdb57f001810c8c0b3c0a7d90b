@@ -1,0 +1,59 @@
+package com.skilldistillery.spotify.controllers;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.skilldistillery.spotify.data.TrackerDAO;
+import com.skilldistillery.spotify.entitities.Tracker;
+
+@RestController
+@RequestMapping("api")
+public class TrackerController {
+
+	@Autowired
+	TrackerDAO tdao;
+
+	@RequestMapping(path = "ping", method = RequestMethod.GET)
+	public String ping() {
+		return "pong";
+	}
+
+	@RequestMapping(path = "trackers", method = RequestMethod.GET)
+	public List<Tracker> index() {
+		return tdao.index();
+	}
+
+	@RequestMapping(path = "trackers/{id}", method = RequestMethod.GET)
+	public Tracker show(@PathVariable int id) {
+		return tdao.show(id);
+	}
+
+	@RequestMapping(path = "trackers", method = RequestMethod.POST)
+	public Tracker create(@RequestBody Tracker tracker, HttpServletRequest req, HttpServletResponse res) {
+		if (tdao.createTracker(tracker) != null) {
+			res.setStatus(201);
+			return tracker;
+		}
+		res.setStatus(500);
+		return tracker;
+	}
+
+	@RequestMapping(path="trackers/average/{id}", method = RequestMethod.GET)
+	public String average(@PathVariable int id) {
+		return "Average cost per minute played is: £" + tdao.average(id);
+	}
+	
+	@RequestMapping(path = "trackers/{id}", method = RequestMethod.DELETE) 
+	public boolean remove(@PathVariable int id) {
+		return tdao.delete(id);
+	}
+}

@@ -1,0 +1,16 @@
+package com.skilldistillery.spotify.data;
+
+import java.util.List;
+
+import com.skilldistillery.spotify.entitities.Membership;
+
+public interface MembershipDAO {
+	
+	public List<Membership> index();
+	public Membership show(int id);
+	public boolean delete(int id);
+	public Membership update(Membership newTracker, int id);
+	public Membership replace(Membership newTracker, int id);
+	public Membership createTracker(Membership tracker);
+
+}
