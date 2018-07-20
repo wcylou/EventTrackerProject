@@ -19,7 +19,36 @@ public class Tracker {
 	@Column(name = "minutes_played")
 	private double minutesPlayed;
 	private Date date;
+	@Column(name = "songs_played")
+	private int songsPlayed;
+	private String genre;
+	@Column(name = "music_platform")
+	private String musicPlatform;
 	
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getMusicPlatform() {
+		return musicPlatform;
+	}
+
+	public void setMusicPlatform(String musicPlatform) {
+		this.musicPlatform = musicPlatform;
+	}
+
+	public int getSongsPlayed() {
+		return songsPlayed;
+	}
+
+	public void setSongsPlayed(int songsPlayed) {
+		this.songsPlayed = songsPlayed;
+	}
+
 	public double getMinutesPlayed() {
 		return minutesPlayed;
 	}
@@ -43,12 +72,18 @@ public class Tracker {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Account [id=");
+		builder.append("Tracker [id=");
 		builder.append(id);
 		builder.append(", minutesPlayed=");
 		builder.append(minutesPlayed);
 		builder.append(", date=");
 		builder.append(date);
+		builder.append(", songsPlayed=");
+		builder.append(songsPlayed);
+		builder.append(", genre=");
+		builder.append(genre);
+		builder.append(", musicPlatform=");
+		builder.append(musicPlatform);
 		builder.append("]");
 		return builder.toString();
 	}

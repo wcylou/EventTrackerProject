@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.spotify.data.TrackerDAO;
 import com.skilldistillery.spotify.entitities.Tracker;
+import com.skilldistillery.spotify.services.TrackerService;
 
 @RestController
 @RequestMapping("api")
@@ -21,6 +22,9 @@ public class TrackerController {
 
 	@Autowired
 	TrackerDAO tdao;
+
+	@Autowired
+	TrackerService tService;
 
 	@RequestMapping(path = "ping", method = RequestMethod.GET)
 	public String ping() {
@@ -49,7 +53,7 @@ public class TrackerController {
 
 	@RequestMapping(path = "trackers/average/{id}", method = RequestMethod.GET)
 	public String average(@PathVariable int id) {
-		return "Average cost per minute played: £" + tdao.average(id);
+		return "Average cost per minute played for ID " + id + ": £" + tdao.average(id);
 	}
 
 	@RequestMapping(path = "trackers/{id}", method = RequestMethod.DELETE)
@@ -76,5 +80,10 @@ public class TrackerController {
 	@RequestMapping(path = "trackers/total", method = RequestMethod.GET)
 	public String total() {
 		return "Total minutes played: " + tdao.total();
+	}
+
+	@RequestMapping(path = "trackers/averagemins", method = RequestMethod.GET)
+	public String averageMinutesPlayed() {
+		return "Average minutes played: " + tService.getAverageMintuesPlayed();
 	}
 }

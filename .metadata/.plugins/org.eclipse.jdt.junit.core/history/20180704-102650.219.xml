@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="AccountTest" project="SpotifyJPA" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.skilldistillery.spotify.test.AccountTest" time="0.154" displayname="AccountTest" uniqueid="[engine:junit-jupiter]/[class:com.skilldistillery.spotify.test.AccountTest]">
-    <testcase name="test_category_mappings" classname="com.skilldistillery.spotify.test.AccountTest" time="0.154" displayname="test_category_mappings()" uniqueid="[engine:junit-jupiter]/[class:com.skilldistillery.spotify.test.AccountTest]/[method:test_category_mappings()]"/>
-  </testsuite>
-</testrun>

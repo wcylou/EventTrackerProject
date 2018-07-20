@@ -1,0 +1,17 @@
+package com.skilldistillery.spotify;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpotifyRestApplication extends SpringBootServletInitializer {
+	
+	  @Override
+	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	    return application.sources(SpotifyRestApplication.class);
+	  }
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpotifyRestApplication.class, args);
+	}
+}

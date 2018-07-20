@@ -1,5 +1,0 @@
-package com.skilldistillery.spotify.data;
-
-public interface TrackerDAO {
-
-}

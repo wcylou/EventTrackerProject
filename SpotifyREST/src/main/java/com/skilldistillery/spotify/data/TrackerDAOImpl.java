@@ -55,6 +55,15 @@ public class TrackerDAOImpl implements TrackerDAO {
 		if (newTracker.getMinutesPlayed() != 0.0) {
 			t.setMinutesPlayed(newTracker.getMinutesPlayed());
 		}
+		if (newTracker.getGenre() != null) {
+			t.setGenre(newTracker.getGenre());
+		}
+		if (newTracker.getSongsPlayed() != 0.0) {
+			t.setSongsPlayed(newTracker.getSongsPlayed());
+		}
+		if (newTracker.getMusicPlatform() != null) {
+			t.setMusicPlatform(newTracker.getMusicPlatform());
+		}
 		return t;
 	}
 
@@ -63,6 +72,9 @@ public class TrackerDAOImpl implements TrackerDAO {
 		Tracker t = em.find(Tracker.class, id);
 		t.setDate(newTracker.getDate());
 		t.setMinutesPlayed(newTracker.getMinutesPlayed());
+		t.setGenre(newTracker.getGenre());
+		t.setSongsPlayed(newTracker.getSongsPlayed());
+		t.setMusicPlatform(newTracker.getMusicPlatform());
 		return t;
 	}
   

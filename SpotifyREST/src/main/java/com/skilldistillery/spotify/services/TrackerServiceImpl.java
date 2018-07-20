@@ -1,0 +1,46 @@
+package com.skilldistillery.spotify.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.skilldistillery.spotify.entitities.Tracker;
+import com.skilldistillery.spotify.repositories.TrackerRepository;
+
+@Service
+public class TrackerServiceImpl implements TrackerService {
+
+	@Autowired
+	private TrackerRepository trackerRepo;
+	
+	@Override
+	public List<Tracker> getAll() {
+		return trackerRepo.findAll();
+	}
+	
+	@Override
+	public Tracker getById(int id) {
+		return trackerRepo.findById(id).get();
+	}
+
+	@Override
+	public Tracker update(Tracker tracker) {
+		return trackerRepo.saveAndFlush(tracker);
+	}
+
+	@Override
+	public Tracker create(Tracker tracker) {
+		return trackerRepo.saveAndFlush(tracker);
+	}
+
+	@Override
+	public void delete(Tracker tracker) {
+		trackerRepo.delete(tracker);
+	}
+
+	@Override
+	public int getAverageMintuesPlayed() {
+		return trackerRepo.getAverageMintuesPlayed();
+	}
+}

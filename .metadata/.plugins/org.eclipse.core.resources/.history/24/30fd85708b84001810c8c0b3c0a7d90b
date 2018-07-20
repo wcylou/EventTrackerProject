@@ -1,0 +1,15 @@
+package com.skilldistillery.spotify.services;
+
+import java.util.List;
+
+import com.skilldistillery.spotify.entitities.Tracker;
+
+public interface TrackerService {
+	
+	List<Tracker> getAll();
+	Tracker getById(int id);
+	Tracker update(Tracker category);
+	Tracker create(Tracker category);
+	void delete(Tracker category);
+
+}

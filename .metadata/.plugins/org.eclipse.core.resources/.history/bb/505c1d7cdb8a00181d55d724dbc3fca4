@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <h1>Welcome to Spotiffy</h1>
+
+  <form name="inputForm">
+    <input type="number" name="trackerId">
+    <button name="lookup">Get Tracker by Id</button>
+  </form>
+  
+  <form name="createTrackerForm" id="createTrackerForm">
+    Minutes Played: <input type="number" name="minutesPlayed">
+    Date: <input type="text" name="description">
+    Songs Played: <input type="text" name="releaseYear">
+    Genre: <input type="text" name="rating">
+    Music Platform: <input type="text" name="length">
+    <button name="create">New Film</button>
+  </form>
+  
+  <div id="output">
+    <div id="filmData"></div>
+    <div id="actorData"></div>
+  </div>
+
+
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

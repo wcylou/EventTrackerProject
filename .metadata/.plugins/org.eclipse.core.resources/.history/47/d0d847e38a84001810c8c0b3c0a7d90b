@@ -1,0 +1,10 @@
+package com.skilldistillery.spotify.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.skilldistillery.spotify.entitities.Tracker;
+
+public interface TrackerRepository extends JpaRepository<Tracker, Integer> {
+
+
+}

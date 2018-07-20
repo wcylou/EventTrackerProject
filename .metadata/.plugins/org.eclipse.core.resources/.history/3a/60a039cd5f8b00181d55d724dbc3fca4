@@ -1,0 +1,95 @@
+window.addEventListener('load', function(e) {
+  console.log('document loaded');
+  init();
+});
+
+var btn = document.getElementById('showAllTrackers');
+
+function init() {
+  document.inputForm.lookup.addEventListener('click', function(event) {
+    event.preventDefault();
+    var trackerId = document.inputForm.trackerId.value;
+    if (!isNaN(trackerId) && trackerId > 0) {
+      getTracker(trackerId);
+    }
+  })
+  document.createTrackerForm.create.addEventListener('click', function(event) {
+	  event.preventDefault();
+	  createTracker();
+  })
+}
+
+function getTracker(trackerId) {
+	var xhr = new XMLHttpRequest();
+
+	var filmData = document.getElementById("trackerId");
+	var link = "api/trackers/" + trackerId;
+	xhr.open('GET', link, true);
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status < 400) {
+			var tracker = JSON.parse(xhr.responseText);
+			displayTracker(tracker);
+		}
+
+		if (xhr.readyState === 4 && xhr.status >= 400) {
+			console.log("test");
+			trackerData.textContent = "Tracker not found";
+		}
+	};
+	xhr.send(null);
+}
+
+function displayTracker(tracker) {
+  var dataDiv = document.getElementById('trackerData');
+  dataDiv.textContent = '';
+  
+  var header = document.createElement('h1');
+  header.textContent = tracker.id;
+  var body = document.createElement('blockquote');
+  var ul = document.createElement('ul');
+  var li = document.createElement('li');
+  var li2 = document.createElement('li');
+  var li3 = document.createElement('li');
+  var li4 = document.createElement('li');
+  var li5 = document.createElement('li');
+  li.textContent = tracker.minutesPlayed;
+  li2.textContent = tracker.date;
+  li3.textContent = tracker.songsPlayed;
+  li4.textContent = tracker.genre;
+  li5.textContent = tracker.musicPlatform;
+  ul.appendChild(li);
+  ul.appendChild(li2);
+  ul.appendChild(li3);
+  ul.appendChild(li4);
+  ul.appendChild(li5);
+  dataDiv.appendChild(header);
+  dataDiv.appendChild(body);
+  dataDiv.appendChild(ul);
+}
+
+function createFilm() {
+	var form = document.getElementById('createFilmForm');
+	var film = {};
+	film.title = form.filmTitle.value;
+	film.description = form.description.value;
+	film.releaseYear = Number(form.releaseYear.value);
+	film.rating = form.rating.value;
+	film.length = Number(form.length.value);
+	console.log(film);
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "api/films", true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status < 400) {
+			var film = JSON.parse(xhr.responseText);
+			displayFilm(film);
+			
+		}
+		
+		if (xhr.readyState === 4 && xhr.status >= 400) {
+			actorData.textContent = "Film not created";
+		}
+	};
+	xhr.send(JSON.stringify(film));
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <h1>Welcome to Spotiffy</h1>
+  
+   <h3>Create Tracker</h3>
+  <form name="createTrackerForm" id="createTrackerForm">
+    Minutes Played: <input type="number" name="minutesPlayed"><br>
+    Date: <input type="date" name="date"><br>
+    Songs Played: <input type="number" name="songsPlayed"><br>
+    Genre: <input type="text" name="genre"><br>
+    Music Platform: <input type="text" name="musicPlatform"><br>
+    <button name="create">New Tracker</button>
+  </form>  
+  
+  <form name="inputFormAverage">
+    <input type="number" name="displayAverageTracker">
+    <button name="lookup">Get Tracker Average by Id</button>
+  </form>
+  
+  <form name="inputForm">
+    <input type="number" name="trackerId">
+    <button name="lookup">Get Tracker by Id</button>
+  </form>
+  
+    <button id ="showAllTrackers">Show All Trackers</button>
+  
+  
+  <div id="output">
+    <div id="trackerData"></div>
+    <div id="trackerAverageData"></div>
+    <div id="actorData"></div>
+  </div>
+  
+   <div id="detail">
+    <p id="trackerid"></p>
+    <p id="minutesPlayed"></p>
+    <p id="date"></p>
+    <p id="songsPlayed"></p>
+    <p id="genre"></p>
+    <p id="musicPlatform"></p>
+  </div>
+
+
+    <script src="js/script.js" charset="utf-8"></script>
+  </body>
+</html>

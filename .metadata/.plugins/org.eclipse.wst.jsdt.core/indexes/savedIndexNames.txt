@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+/Users/wlou/SD/Java/SpotifyWorkspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+126083248.index
+2428668713.index
+2142107138.index
+3827852716.index
+478484533.index
