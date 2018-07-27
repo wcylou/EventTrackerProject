@@ -1,12 +1,15 @@
-## Midterm Project
 ## Week 12 Wilson Lou - Skill Distillery
-### Event Tracker: JSON, SpringREST and JavaScript
+### Event Tracker: JSON, SpringREST and Angular
+
+http://18.219.168.192:8080/SpotifyREST/home
 
 ### Overview
-- The user can view all tracking events, perform full CRUD on any of the trackers.
-- The page dynamically updates using JavaScript.
+- The user can view all tracking events, perform full CRUD on any of the trackers in MySQL database.
+- The user can filter by genre (Angular pipes used).
+- The page dynamically updates using Angular.
 
 ### Technologies/Tools Used
+* Angular
 * Java
 * JavaScript
 * Spring Tool Suite
@@ -18,4 +21,4 @@
 
 ### Challenges and Lessons Learned
 * Event listeners enable the page the display information without having to refresh the page.
-* JavaScript is a powerful tool when building HTML elements e.g. forms.
+* Practised deployment of web application to AWS
