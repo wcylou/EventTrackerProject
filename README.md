@@ -1,7 +1,7 @@
 ## Week 12 Wilson Lou - Skill Distillery
 ### Event Tracker: JSON, SpringREST and Angular
 
-http://18.219.168.192:8080/SpotifyREST/
+http://18.219.168.192:8080/SpotifyREST/ 
 
 ### Overview
 - The user can view all tracking events, perform full CRUD on any of the trackers in MySQL database.
